@@ -1,0 +1,19 @@
+div {
+  background-color: green;
+  border: 2px solid orange;
+  padding: 20px 2px;
+}
+
+.pink-card {
+  background-color: palevioletred;
+  border: 2px solid orange;
+  padding: 20px 40px;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+p {
+  padding: 0px 30px;
+}
