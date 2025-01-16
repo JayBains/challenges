@@ -1,0 +1,24 @@
+h1 {
+  color: orange;
+  text-align: center;
+  font: 1.2rem "Fira Sans", sans-serif;
+  font-weight: bolder;
+}
+
+.right {
+  text-align: right;
+}
+
+.green-bold {
+  color: green;
+  font-weight: bold;
+}
+
+ul {
+  border: 2px solid black;
+  list-style-type: none;
+}
+
+ul > li:first-child {
+  text-decoration: underline;
+}
