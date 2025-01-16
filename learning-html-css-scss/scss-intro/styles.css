@@ -1,0 +1,62 @@
+body {
+  display: flex;
+}
+
+.stripe {
+  border: 1px solid black;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+  .stripe {
+    width: 500px;
+    height: 100px;
+  }
+  .stripe--first {
+    background-color: black;
+  }
+  .stripe--second {
+    background-color: red;
+  }
+  .stripe--third {
+    background-color: yellow;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+  body {
+    flex-direction: row;
+  }
+  .stripe {
+    width: 166.6666666667px;
+    height: 300px;
+  }
+  .stripe--first {
+    background-color: black;
+  }
+  .stripe--second {
+    background-color: yellow;
+  }
+  .stripe--third {
+    background-color: red;
+  }
+}
+@media only screen and (min-width: 901px) {
+  body {
+    flex-direction: row;
+  }
+  .stripe {
+    width: 166.6666666667px;
+    height: 300px;
+  }
+  .stripe--first {
+    background-color: green;
+  }
+  .stripe--second {
+    background-color: whitesmoke;
+  }
+  .stripe--third {
+    background-color: orange;
+  }
+}
