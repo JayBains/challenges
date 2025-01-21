@@ -31,3 +31,19 @@ const createCard = () => {
 };
 button.addEventListener("click", createCard);
 console.log(button);
+
+// //alternative approach
+// const handleRender = () => {
+//   if (cardContainer.innerHTML === "") {
+//     companies.forEach(({ name, industry, start, end }) => {
+//       cardContainer.innerHTML += `<div>
+// <h2>${name}</h2>
+// <p>${industry}</p>
+// <p>${start}</p>
+// <p>${end}</p>
+// </div>`;
+//     });
+//   }
+// };
+
+// button.addEventListener("click", handleRender);
