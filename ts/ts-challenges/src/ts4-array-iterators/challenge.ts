@@ -2,6 +2,8 @@
  *  & calling your own functions.
  */
 
+import { parse } from "path";
+
 /* 
   All challenges in this repository are separated into four levels: Foundation, Intermediate, Advanced and Expert.
   The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
@@ -19,9 +21,7 @@
  * @return {boolean[]} [true, true, true]
  */
 
-export const removeFalseValues = (booleanArr: boolean[]): boolean[] => {
-  return [];
-};
+export const removeFalseValues = (booleanArr: boolean[]): boolean[] => {};
 
 /**
  * A function that takes an array of numbers that are between 0 and 1.
@@ -32,7 +32,7 @@ export const removeFalseValues = (booleanArr: boolean[]): boolean[] => {
  */
 
 export const createPercentageList = (numbersArr: number[]): string[] => {
-  return [];
+  return numbersArr.map((n) => `${n * 100}%`);
 };
 
 /**
@@ -44,7 +44,10 @@ export const createPercentageList = (numbersArr: number[]): string[] => {
  * @return {string[]} ["disco shoes", "disco jacket", "disco belt"]
  */
 
-export const createListOfPossessions = (possessionsArr: string[], name: string): string[] => {
+export const createListOfPossessions = (
+  possessionsArr: string[],
+  name: string
+): string[] => {
   return [];
 };
 
@@ -67,9 +70,8 @@ export const createListOfPossessions = (possessionsArr: string[], name: string):
  * @return {number[]} [1, 2, 3, 4, 5]
  */
 
-export const convertStringToNumbersArray = (numberString: string): number[] => {
-  return [];
-};
+export const convertStringToNumbersArray = (numberString: string): number[] =>
+  numberString.split("+").map((str) => parseInt(str));
 
 /**
  * A function that takes a string of numbers joined with a "+" and creates a new array based on if the number is even or odd.
@@ -92,7 +94,10 @@ export const createOddEvenArray = (numberString: string): string[] => {
  * @return {string[]} - ["The Google story"]
  */
 
-export const filterBooksBySearch = (booksArr: string[], searchTerm: string): string[] => {
+export const filterBooksBySearch = (
+  booksArr: string[],
+  searchTerm: string
+): string[] => {
   return [];
 };
 
@@ -111,7 +116,7 @@ export const filterBooksBySearch = (booksArr: string[], searchTerm: string): str
  */
 
 export const formatStringArray = (stringArr: string[]) => {
-  const cleanedArr = stringArr.forEach(string => {
+  const cleanedArr = stringArr.forEach((string) => {
     const cleanStr = string.trim().toLowerCase();
     return cleanStr;
   }) as unknown as string[];
