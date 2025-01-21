@@ -27,7 +27,7 @@ const stringsToClean = ["  CaBBage  ", "TuRnIp", "  RADish", "CARroT  "];
 const cleanedStrings = "cabbage+turnip+radish+carrot";
 const formattedStringArr = ["T", "e", "S", "t", "S", "t", "R", "i", "N", "g"];
 
-describe.skip("Testing removeFalseValues()", () => {
+describe("Testing removeFalseValues()", () => {
   it("Should remove false values from an array", () => {
     expect(removeFalseValues(Array(5).fill(false)).length).toBe(0);
     expect(removeFalseValues(Array(20).fill(false)).length).toBe(0);
@@ -59,7 +59,7 @@ describe("Testing createPercentageList()", () => {
   });
 });
 
-describe.skip("Testing createListOfPossessions()", () => {
+describe("Testing createListOfPossessions()", () => {
   it("Should prefix name as expected", () => {
     expect(createListOfPossessions(possessions, "Matt's")).toEqual(
       mattsPossessions
@@ -102,7 +102,7 @@ describe("Testing convertStringToNumbersArray()", () => {
   });
 });
 
-describe.skip("Testing createOddEvenArray()", () => {
+describe("Testing createOddEvenArray()", () => {
   it("Should convert string as expected", () => {
     expect(createOddEvenArray(numbersCSV)).toEqual([
       "odd",
@@ -133,7 +133,7 @@ describe.skip("Testing createOddEvenArray()", () => {
   });
 });
 
-describe.skip("Testing filterBooksBySearch()", () => {
+describe("Testing filterBooksBySearch()", () => {
   it("Should handle one match", () => {
     expect(filterBooksBySearch(["one thing"], "one thing")).toEqual([
       "one thing",
@@ -179,7 +179,7 @@ describe.skip("Testing filterBooksBySearch()", () => {
   });
 });
 
-describe.skip("Testing formatStringArray()", () => {
+describe("Testing formatStringArray()", () => {
   it("Should remove whitespace", () => {
     expect(formatStringArray(["  front"])).toBe("front");
     expect(formatStringArray(["back "])).toBe("back");
@@ -201,7 +201,7 @@ describe.skip("Testing formatStringArray()", () => {
   });
 });
 
-describe.skip("Testing formatString()", () => {
+describe("Testing formatString()", () => {
   it("Should remove numbers", () => {
     expect(formatString("nu55mber77s").length).toBe(7);
     expect(formatString("1234567").length).toBe(0);
@@ -241,7 +241,7 @@ describe.skip("Testing formatString()", () => {
   });
 });
 
-describe.skip("Testing fizzBuzz()", () => {
+describe("Testing fizzBuzz()", () => {
   const cleanArray = Array(50)
     .fill(0)
     .map((_, index) => index + 1);

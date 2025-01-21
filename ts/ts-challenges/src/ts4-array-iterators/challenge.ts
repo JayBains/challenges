@@ -21,7 +21,9 @@ import { parse } from "path";
  * @return {boolean[]} [true, true, true]
  */
 
-export const removeFalseValues = (booleanArr: boolean[]): boolean[] => {};
+export const removeFalseValues = (booleanArr: boolean[]): boolean[] => {
+  return booleanArr.filter((x) => x);
+};
 
 /**
  * A function that takes an array of numbers that are between 0 and 1.
@@ -31,9 +33,14 @@ export const removeFalseValues = (booleanArr: boolean[]): boolean[] => {};
  * @return {string[]} ["100%", "50%", "70%", "25%"]
  */
 
-export const createPercentageList = (numbersArr: number[]): string[] => {
-  return numbersArr.map((n) => `${n * 100}%`);
-};
+export const createPercentageList = (numbersArr: number[]): string[] =>
+  numbersArr.map((n) => `${n * 100}%`);
+
+// Basic approach:
+// {
+//   const toStr = numbersArr.map((n) => n * 100 + "%");
+//   return toStr;
+// };
 
 /**
  * A function that takes an array of possessions and a name.
@@ -72,6 +79,13 @@ export const createListOfPossessions = (
 
 export const convertStringToNumbersArray = (numberString: string): number[] =>
   numberString.split("+").map((str) => parseInt(str));
+
+// Basic approach:
+// {
+//   const splitString = numberString.split("+");
+//   const numArr = splitString.map((str) => parseInt(str));
+//   return numArr;
+// };
 
 /**
  * A function that takes a string of numbers joined with a "+" and creates a new array based on if the number is even or odd.
@@ -116,7 +130,7 @@ export const filterBooksBySearch = (
  */
 
 export const formatStringArray = (stringArr: string[]) => {
-  const cleanedArr = stringArr.forEach((string) => {
+  const cleanedArr = stringArr.map((string) => {
     const cleanStr = string.trim().toLowerCase();
     return cleanStr;
   }) as unknown as string[];
@@ -125,6 +139,8 @@ export const formatStringArray = (stringArr: string[]) => {
 
   return joinedString;
 };
+
+// forEach method DOES NOT return anything. It just applies a function to each element. use .map() for a return.
 
 /**
  * A function that takes a string, cleans it and formats it based on a condition.
