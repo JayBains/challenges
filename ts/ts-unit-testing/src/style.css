@@ -1,0 +1,21 @@
+* {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+#food-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    padding: 50px;
+}
+
+.junk {
+    border: 2px solid sandybrown;
+    border-radius: 10px;
+}
+
+.healthy {
+    border: 2px solid green;
+    border-radius: 10px;
+}

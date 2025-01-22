@@ -54,9 +54,7 @@ export const createPercentageList = (numbersArr: number[]): string[] =>
 export const createListOfPossessions = (
   possessionsArr: string[],
   name: string
-): string[] => {
-  return [];
-};
+): string[] => possessionsArr.map((x) => name + " " + x);
 
 /* Intermediate Challenges */
 
@@ -95,9 +93,27 @@ export const convertStringToNumbersArray = (numberString: string): number[] =>
  * @return {string[]} ['odd', 'even', 'odd', 'even', 'odd']
  */
 
-export const createOddEvenArray = (numberString: string): string[] => {
-  return [];
-};
+export const createOddEvenArray = (numberString: string): string[] =>
+  convertStringToNumbersArray(numberString).map((x) =>
+    x % 2 === 0 ? "even" : "odd"
+  );
+
+// Basic approach:
+//   {
+//   const bork = convertStringToNumbersArray(numberString);
+//   const meep: string[] = [];
+//   bork.forEach((x) => {
+//     if (x % 2 === 0) {
+//       meep.push("even");
+//     } else {
+//       meep.push("odd");
+//     }
+//   });
+
+//   return meep;
+// };
+
+// Basic with ternary operator:
 
 /**
  * A function that takes an array of book titles and a search term.
@@ -112,7 +128,9 @@ export const filterBooksBySearch = (
   booksArr: string[],
   searchTerm: string
 ): string[] => {
-  return [];
+  booksArr.map((x) => {
+    x.contains();
+  });
 };
 
 /* Advanced Challenges */
