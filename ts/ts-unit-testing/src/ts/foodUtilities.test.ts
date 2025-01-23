@@ -1,4 +1,4 @@
-import { FoodType } from "./Food";
+import { FoodType, Food } from "./Food";
 import foodStock from "./foodData";
 import {
   capitalizeString,
@@ -29,6 +29,12 @@ describe("Testing capitalizeString", () => {
 });
 
 describe("testing correct food type", () => {
+  const mockData: Food[] = [
+    { img: "🍕", name: "pizza", foodType: FoodType.JUNK, rating: 10 },
+    { img: "🥗", name: "salad", foodType: FoodType.HEALTHY, rating: 4 },
+    { img: "🍟", name: "fries", foodType: FoodType.JUNK, rating: 3 },
+  ];
+
   test("Should be junk", () => {
     const junkFood = [
       { img: "🍕", name: "pizza", foodType: FoodType.JUNK, rating: 10 },
