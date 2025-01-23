@@ -22,43 +22,51 @@ describe("Testing capitalizeString", () => {
     // use .toBe to compare primitive values or to check referential identity of object instances.
     // It calls Object to compare values which is even better for testing than === strict.
   });
+
   test("Should return a correct output when given a valid input", () => {
     const output = capitalizeString("croissant");
     expect(output).not.toBe("Pain Au Chocolat");
   });
+
+  test("Should not mutate a work already capitalised", () => {
+    const output = capitalizeString("APPLE TART");
+    expect(output).toBe("APPLE TART");
+  });
 });
 
-describe("testing correct food type", () => {
-  const mockData: Food[] = [
-    { img: "🍕", name: "pizza", foodType: FoodType.JUNK, rating: 10 },
-    { img: "🥗", name: "salad", foodType: FoodType.HEALTHY, rating: 4 },
-    { img: "🍟", name: "fries", foodType: FoodType.JUNK, rating: 3 },
-  ];
-
+describe("Testing food filter", () => {
   test("Should be junk", () => {
-    const junkFood = [
+    const healthyFood = [
       { img: "🍕", name: "pizza", foodType: FoodType.JUNK, rating: 10 },
       { img: "🍔", name: "burger", foodType: FoodType.JUNK, rating: 7 },
       { img: "🍟", name: "fries", foodType: FoodType.JUNK, rating: 3 },
       { img: "🌭", name: "hot dog", foodType: FoodType.JUNK, rating: 3 },
     ];
-    const inputStock = foodStock;
-    const foodType = "junk" as FoodType;
-    const output = filterFoodByType(foodType, inputStock);
-    expect(output).toEqual(junkFood);
+
+    const output = filterFoodByType(FoodType.HEALTHY, healthyFood);
+    expect(output).toEqual([]);
   });
 
   test("Should be healthy", () => {
-    const healthyFood = [
+    const junkFood = [
       { img: "🥗", name: "salad", foodType: FoodType.HEALTHY, rating: 4 },
       { img: "🥙", name: "pita", foodType: FoodType.HEALTHY, rating: 6 },
       { img: "🥪", name: "sandwich", foodType: FoodType.HEALTHY, rating: 2 },
       { img: "🌯", name: "burrito", foodType: FoodType.HEALTHY, rating: 9 },
       { img: "🥣", name: "soup", foodType: FoodType.HEALTHY, rating: 1 },
     ];
-    const inputStock = foodStock;
-    const foodType = "healthy" as FoodType;
-    const output = filterFoodByType(foodType, inputStock);
-    expect(output).toEqual(healthyFood);
+    const output = filterFoodByType(FoodType.JUNK, junkFood);
+    expect(output).toEqual([]);
+  });
+
+  test("Should not mutate original array", () => {
+    const mockData: Food[] = [
+      { img: "🍕", name: "pizza", foodType: FoodType.JUNK, rating: 10 },
+      { img: "🍔", name: "burger", foodType: FoodType.JUNK, rating: 7 },
+      { img: "🍟", name: "fries", foodType: FoodType.JUNK, rating: 3 },
+    ];
+    const output = filterFoodByType(FoodType.HEALTHY, mockData);
+    expect(output).not.toBe(mockData);
+    expect(mockData).toBe(mockData);
   });
 });
