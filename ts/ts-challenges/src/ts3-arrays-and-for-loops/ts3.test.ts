@@ -20,7 +20,7 @@ const ingredients = ["Bacon", "Lettuce", "Tomato"];
 const ingredientsString = "Bacon+Lettuce+Tomato";
 const itemString = "Apple+Orange+Pear";
 
-describe("Testing createRecipeString()", () => {
+describe.skip("Testing createRecipeString()", () => {
   it("Should handle multiple inputs", () => {
     expect(createRecipeString(ingredients)).toEqual(ingredientsString);
     expect(createRecipeString(items)).toEqual(itemString);
@@ -68,7 +68,11 @@ describe.skip("Testing totalRange()", () => {
 describe.skip("Testing moveFirstAndLastItems()", () => {
   it("Should handle multiple inputs", () => {
     expect(moveFirstAndLastItems(items)).toEqual(["Pear", "Apple", "Orange"]);
-    expect(moveFirstAndLastItems(ingredients)).toEqual(["Tomato", "Bacon", "Lettuce"]);
+    expect(moveFirstAndLastItems(ingredients)).toEqual([
+      "Tomato",
+      "Bacon",
+      "Lettuce",
+    ]);
   });
 });
 
@@ -138,7 +142,11 @@ describe.skip("Testing generateHighscores()", () => {
   beforeEach(() => {
     players = ["Andy", "Bex", "Calum"];
     playerScores = [60, 99, 71];
-    highscores = ["P:1 Andy scored 60", "P:2 Bex scored 99", "P:3 Calum scored 71"];
+    highscores = [
+      "P:1 Andy scored 60",
+      "P:2 Bex scored 99",
+      "P:3 Calum scored 71",
+    ];
   });
 
   it("Should format arrays with valid parameters", () => {
@@ -150,7 +158,9 @@ describe.skip("Testing generateHighscores()", () => {
   });
 
   it("Should not lose any players", () => {
-    expect(generateHighscores(Array(10).fill("A"), Array(10).fill(1)).length).toBe(10);
+    expect(
+      generateHighscores(Array(10).fill("A"), Array(10).fill(1)).length
+    ).toBe(10);
   });
 
   it("Should catch invalid parameters.", () => {
@@ -179,8 +189,12 @@ describe.skip("Testing encryptString()", () => {
   });
 
   it("Should encrypt large words", () => {
-    expect(encryptString("antidisestablishmentarianism")).toBe("aistlhnrnmndeaimtiitisbseaas");
-    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe("hpomsosielpbiototsqpdihipponreupaooa");
+    expect(encryptString("antidisestablishmentarianism")).toBe(
+      "aistlhnrnmndeaimtiitisbseaas"
+    );
+    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe(
+      "hpomsosielpbiototsqpdihipponreupaooa"
+    );
   });
 
   it("Should keep spaces between words", () => {

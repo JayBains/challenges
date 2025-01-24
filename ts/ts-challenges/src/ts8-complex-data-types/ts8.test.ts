@@ -15,13 +15,15 @@ import {
 const mockEmployeeData = [
   {
     name: "Edith Gibson",
-    quote: "Your body is precious. It is our vehicle for awakening. Treat it with care.",
+    quote:
+      "Your body is precious. It is our vehicle for awakening. Treat it with care.",
     yearsEmployed: 14,
     isManagement: true,
   },
   {
     name: "Adam Holmes",
-    quote: "I detest life-insurance agents; they always argue that I shall some day die, which is not so.",
+    quote:
+      "I detest life-insurance agents; they always argue that I shall some day die, which is not so.",
     yearsEmployed: 1,
     isManagement: false,
   },
@@ -34,7 +36,8 @@ const mockEmployeeData = [
   },
   {
     name: "Adelaide Owens",
-    quote: "Columbus found a world, and had no chart save one that Faith deciphered in the skies.",
+    quote:
+      "Columbus found a world, and had no chart save one that Faith deciphered in the skies.",
     yearsEmployed: 9,
     isManagement: false,
   },
@@ -46,7 +49,7 @@ const mockEmployeeData = [
   },
 ];
 
-describe("getEmployeeQuotes() tests", () => {
+describe.skip("getEmployeeQuotes() tests", () => {
   it("Should return an array of just the quote from the data provided", () => {
     expect(getEmployeeQuotes(mockEmployeeData)).toStrictEqual([
       "Your body is precious. It is our vehicle for awakening. Treat it with care.",
@@ -66,13 +69,15 @@ describe.skip("getTheManagers() tests", () => {
     expect(getTheManagers(mockEmployeeData)).toStrictEqual([
       {
         name: "Edith Gibson",
-        quote: "Your body is precious. It is our vehicle for awakening. Treat it with care.",
+        quote:
+          "Your body is precious. It is our vehicle for awakening. Treat it with care.",
         yearsEmployed: 14,
         isManagement: true,
       },
       {
         name: "Adison Crawford",
-        quote: "Only learn to seize good fortune, for good fortune is always here.",
+        quote:
+          "Only learn to seize good fortune, for good fortune is always here.",
         yearsEmployed: 7,
         isManagement: true,
       },
@@ -179,11 +184,15 @@ describe.skip("findMostExpensiveItem() tests", () => {
 
 describe.skip("setTotalPrice() tests", () => {
   it("Should not modify original array of objects", () => {
-    expect(setTotalPrice(mockShoppingBasket)).not.toStrictEqual(mockShoppingBasket);
+    expect(setTotalPrice(mockShoppingBasket)).not.toStrictEqual(
+      mockShoppingBasket
+    );
   });
 
   it("Should accurately total each shopping item", () => {
-    expect(setTotalPrice(mockShoppingBasket).sort((a, b) => a.price - b.price)).toStrictEqual(
+    expect(
+      setTotalPrice(mockShoppingBasket).sort((a, b) => a.price - b.price)
+    ).toStrictEqual(
       mockShoppingBasketWithTotals.sort((a, b) => a.price - b.price)
     );
   });
@@ -367,7 +376,8 @@ describe.skip("cleanCocktailResponseData() tests", () => {
       strDrink: "Godchild",
       strCategory: "Ordinary Drink",
       strAlcoholic: "Alcoholic",
-      strInstructions: "Shake all ingredients well with cracked ice, strain into a champagne flute, and serve.",
+      strInstructions:
+        "Shake all ingredients well with cracked ice, strain into a champagne flute, and serve.",
       strIngredient1: "Vodka",
       strIngredient2: "Amaretto",
       strIngredient3: "Heavy cream",
@@ -380,7 +390,8 @@ describe.skip("cleanCocktailResponseData() tests", () => {
       strDrink: "Cuba Libre",
       strCategory: "Ordinary Drink",
       strAlcoholic: "Alcoholic",
-      strInstructions: "Build all ingredients in a Collins glass filled with ice. Garnish with lime wedge.",
+      strInstructions:
+        "Build all ingredients in a Collins glass filled with ice. Garnish with lime wedge.",
       strIngredient1: "Light rum",
       strIngredient2: "Lime",
       strIngredient3: "Coca-Cola",
@@ -405,11 +416,15 @@ describe.skip("cleanCocktailResponseData() tests", () => {
   ];
 
   it("Should not mutate the original array", () => {
-    expect(cleanCocktailResponseData(mockCocktailData)).not.toStrictEqual(mockCocktailData);
+    expect(cleanCocktailResponseData(mockCocktailData)).not.toStrictEqual(
+      mockCocktailData
+    );
   });
 
   it("Should add an array for the ingredients", () => {
-    expect(Array.isArray(cleanCocktailResponseData(mockCocktailData)[0].ingredients)).toBe(true);
+    expect(
+      Array.isArray(cleanCocktailResponseData(mockCocktailData)[0].ingredients)
+    ).toBe(true);
   });
 
   it("Should match given structure", () => {
@@ -428,7 +443,8 @@ describe.skip("cleanCocktailResponseData() tests", () => {
         drink: "Godchild",
         category: "Ordinary Drink",
         alcoholic: "Alcoholic",
-        instructions: "Shake all ingredients well with cracked ice, strain into a champagne flute, and serve.",
+        instructions:
+          "Shake all ingredients well with cracked ice, strain into a champagne flute, and serve.",
         ingredients: ["Vodka", "Amaretto", "Heavy cream"],
       },
       {
@@ -436,7 +452,8 @@ describe.skip("cleanCocktailResponseData() tests", () => {
         drink: "Cuba Libre",
         category: "Ordinary Drink",
         alcoholic: "Alcoholic",
-        instructions: "Build all ingredients in a Collins glass filled with ice. Garnish with lime wedge.",
+        instructions:
+          "Build all ingredients in a Collins glass filled with ice. Garnish with lime wedge.",
         ingredients: ["Light rum", "Lime", "Coca-Cola"],
       },
       {

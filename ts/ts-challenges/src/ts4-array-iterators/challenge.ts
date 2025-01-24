@@ -128,9 +128,8 @@ export const filterBooksBySearch = (
   booksArr: string[],
   searchTerm: string
 ): string[] => {
-  booksArr.map((x) => {
-    x.contains();
-  });
+  const search = booksArr.filter((book) => book.includes(searchTerm));
+  return search;
 };
 
 /* Advanced Challenges */
@@ -174,7 +173,13 @@ export const formatStringArray = (stringArr: string[]) => {
  */
 
 export const formatString = (string: string): string[] => {
-  return [];
+  const cleanStr = string.replace(/[^\w]|[\s\d]/gi, "");
+  const formatString = cleanStr
+    .split("")
+    .map((letter, index) =>
+      index % 2 === 0 ? letter.toUpperCase() : letter.toLowerCase()
+    );
+  return formatString;
 };
 
 /**
@@ -201,5 +206,18 @@ export const formatString = (string: string): string[] => {
  */
 
 export const fizzBuzz = (mixedArray: any[]): string[] => {
-  return [];
+  const positiveNumberArray = mixedArray.filter(
+    (item: any) => Number(item) && item > 0
+  ) as string[] | number[];
+
+  const fizzBuzz = positiveNumberArray.map((number) => {
+    let string = "";
+
+    if (!(+number % 3)) string += "Fizz";
+    if (!(+number % 5)) string += "Buzz";
+
+    return string || number.toString();
+  });
+
+  return fizzBuzz;
 };

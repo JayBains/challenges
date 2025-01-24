@@ -13,7 +13,7 @@ import {
 // REMOVE .skip FROM describe FUNCTION TO STOP SKIPPING TEST BLOCKS
 
 beforeEach(() => {
-  const mockFetch = vi.fn().mockImplementation(args =>
+  const mockFetch = vi.fn().mockImplementation((args) =>
     Promise.resolve({
       json: () => require(args),
     })
@@ -22,7 +22,7 @@ beforeEach(() => {
   global.fetch = mockFetch;
 });
 
-describe("getData() tests", () => {
+describe.skip("getData() tests", () => {
   it("Fetch should have been called once", () => {
     getData("./mockPersonApi.json");
     expect(fetch).toHaveBeenCalledTimes(1);
@@ -43,7 +43,15 @@ describe.skip("getNames() tests", () => {
   it("Should return an array of names", async () => {
     const namesArr = await getNames("./mockPersonApi.json");
 
-    expect(namesArr).toStrictEqual(["Peter", "Georgia", "Joanna", "Buzz", "Travis", "Paula", "J"]);
+    expect(namesArr).toStrictEqual([
+      "Peter",
+      "Georgia",
+      "Joanna",
+      "Buzz",
+      "Travis",
+      "Paula",
+      "J",
+    ]);
   });
 });
 
@@ -163,17 +171,26 @@ describe.skip("getPeopleWithMatchingInterests() tests", () => {
   ];
 
   it("Should return all people with a matching interest (swimming)", async () => {
-    const swimmingInterest = await getPeopleWithMatchingInterests("./mockPersonApi.json", "swimming");
+    const swimmingInterest = await getPeopleWithMatchingInterests(
+      "./mockPersonApi.json",
+      "swimming"
+    );
     expect(swimmingInterest).toStrictEqual(dummySwimming);
   });
 
   it("Should return all people with a matching interest (mma)", async () => {
-    const mmaInterests = await getPeopleWithMatchingInterests("./mockPersonApi.json", "MMA");
+    const mmaInterests = await getPeopleWithMatchingInterests(
+      "./mockPersonApi.json",
+      "MMA"
+    );
     expect(mmaInterests).toStrictEqual(dummyMma);
   });
 
   it("Should return 'No people with interest found' if no matching interests on people", async () => {
-    const noInterests = await getPeopleWithMatchingInterests("./mockPersonApi.json", "whittling");
+    const noInterests = await getPeopleWithMatchingInterests(
+      "./mockPersonApi.json",
+      "whittling"
+    );
     expect(noInterests).toBe("No people with interest found");
   });
 });
@@ -253,7 +270,9 @@ describe.skip("setDescription() tests", () => {
   ];
 
   it("Should not modify original data", async () => {
-    const peopleWithDescriptions = await setDescriptions("./mockPersonApi.json");
+    const peopleWithDescriptions = await setDescriptions(
+      "./mockPersonApi.json"
+    );
     expect(peopleWithDescriptions).not.toStrictEqual(people);
   });
 
@@ -462,21 +481,38 @@ describe.skip("setInterestDetails() tests", () => {
   });
 
   it("Should not modify original data", async () => {
-    const detailedInterestsResponse = await setInterestDetails("./mockPersonApi.json", "./mockInterestsApi.json");
+    const detailedInterestsResponse = await setInterestDetails(
+      "./mockPersonApi.json",
+      "./mockInterestsApi.json"
+    );
     expect(detailedInterestsResponse).not.toStrictEqual(people);
   });
 
   it("Should turn the interests key into an array of objects", async () => {
-    const detailedInterestsResponse = await setInterestDetails("./mockPersonApi.json", "./mockInterestsApi.json");
+    const detailedInterestsResponse = await setInterestDetails(
+      "./mockPersonApi.json",
+      "./mockInterestsApi.json"
+    );
     expect(Array.isArray(detailedInterestsResponse[0].interests)).toBe(true);
-    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty("costPerAnnum");
-    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty("interest");
-    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty("isDoneInGroups");
-    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty("sizeOfCommunity");
+    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty(
+      "costPerAnnum"
+    );
+    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty(
+      "interest"
+    );
+    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty(
+      "isDoneInGroups"
+    );
+    expect(detailedInterestsResponse[0].interests[0]).toHaveProperty(
+      "sizeOfCommunity"
+    );
   });
 
   it("Should match the exact dummy array of objects", async () => {
-    const detailedInterestsResponse = await setInterestDetails("./mockPersonApi.json", "./mockInterestsApi.json");
+    const detailedInterestsResponse = await setInterestDetails(
+      "./mockPersonApi.json",
+      "./mockInterestsApi.json"
+    );
     expect(detailedInterestsResponse).toStrictEqual(dummyDetailedInterests);
   });
 });

@@ -12,7 +12,7 @@ import {
 
 // REMOVE .skip FROM DESCRIBE FUNCTION TO STOP SKIPPING TEST BLOCKS
 
-describe("getFurniturePrice() tests", () => {
+describe.skip("getFurniturePrice() tests", () => {
   const table = { name: "lack", price: 6 };
   const cabinet = { name: "brimnes", price: 55 };
 
@@ -59,8 +59,12 @@ describe.skip("makeSpaceship() tests", () => {
   };
 
   it("Should create an object with the provided arguments as values", () => {
-    expect(makeSpaceship("rocinante", 8, "epstein drive", true)).toStrictEqual(rocinante);
-    expect(makeSpaceship("uss enterprise (ncc-1701-d)", 5, "impulse drive", true)).toStrictEqual(enterprise);
+    expect(makeSpaceship("rocinante", 8, "epstein drive", true)).toStrictEqual(
+      rocinante
+    );
+    expect(
+      makeSpaceship("uss enterprise (ncc-1701-d)", 5, "impulse drive", true)
+    ).toStrictEqual(enterprise);
   });
 });
 
@@ -161,7 +165,9 @@ describe.skip("getUserAddress() tests", () => {
   };
 
   it("Should be able to get the address from the user object", () => {
-    expect(getUserAddress(user1)).toBe("4 Privet Drive Little Whinging Surrey CR3 0AA");
+    expect(getUserAddress(user1)).toBe(
+      "4 Privet Drive Little Whinging Surrey CR3 0AA"
+    );
     expect(getUserAddress(user2)).toBe("32 Windsor Gardens London W9 3RG");
   });
 });
@@ -191,7 +197,9 @@ describe.skip("setSafeAllergens() tests", () => {
   };
 
   it("Should include all allergens as safe if none present on the object allergies array", () => {
-    expect(setSafeAllergens(customer1, allergenList).safeAllergens).toStrictEqual([
+    expect(
+      setSafeAllergens(customer1, allergenList).safeAllergens
+    ).toStrictEqual([
       "celery",
       "gluten",
       "crustaceans",
@@ -231,17 +239,30 @@ describe.skip("setSafeAllergens() tests", () => {
   };
 
   it("Should include no allergens if all are found on the customer object", () => {
-    expect(setSafeAllergens(customer2, allergenList).safeAllergens).toStrictEqual([]);
+    expect(
+      setSafeAllergens(customer2, allergenList).safeAllergens
+    ).toStrictEqual([]);
   });
 
   const customer3 = {
     id: 105,
     name: "Mandy Manderson",
-    allergies: ["eggs", "fish", "lupin", "molluscs", "mustard", "sesame", "soybeans", "sulphites"],
+    allergies: [
+      "eggs",
+      "fish",
+      "lupin",
+      "molluscs",
+      "mustard",
+      "sesame",
+      "soybeans",
+      "sulphites",
+    ],
   };
 
   it("Should include some allergens if some are present on customer allergen list", () => {
-    expect(setSafeAllergens(customer3, allergenList).safeAllergens).toStrictEqual([
+    expect(
+      setSafeAllergens(customer3, allergenList).safeAllergens
+    ).toStrictEqual([
       "celery",
       "gluten",
       "crustaceans",

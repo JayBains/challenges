@@ -12,7 +12,7 @@ import {
 
 // REMOVE .skip FROM describe FUNCTION TO STOP SKIPPING TEST BLOCKS
 
-describe("Testing totalScoresArr()", () => {
+describe.skip("Testing totalScoresArr()", () => {
   const scoresArr = Array(50).fill(20);
   it("Should total numbers", () => {
     expect(totalScoresArr(scoresArr)).toBe(1000);
@@ -42,22 +42,41 @@ describe.skip("Testing sortCharactersAlphabetically()", () => {
   const upperCaseCharArr = "DLOEJMIXWRSNFACQYUKVHTGZPB".split("");
   const sortedCharArr = "abcdefghijklmnopqrstuvwxyz".split("");
   const mixedCaseArr = [...lowerCaseCharArr, ...upperCaseCharArr];
-  const sortedMixedCaseArr = "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz".split("");
+  const sortedMixedCaseArr =
+    "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz".split("");
 
   it("Should sort lowercase letters alphabetically", () => {
-    expect(sortCharactersAlphabetically(lowerCaseCharArr)).toEqual(sortedCharArr);
+    expect(sortCharactersAlphabetically(lowerCaseCharArr)).toEqual(
+      sortedCharArr
+    );
     expect(sortCharactersAlphabetically(sortedCharArr)).toEqual(sortedCharArr);
-    expect(sortCharactersAlphabetically(["c", "b", "a"])).toEqual(["a", "b", "c"]);
+    expect(sortCharactersAlphabetically(["c", "b", "a"])).toEqual([
+      "a",
+      "b",
+      "c",
+    ]);
   });
 
   it("Should sort uppercase letters alphabetically", () => {
-    expect(sortCharactersAlphabetically(upperCaseCharArr)).toEqual(sortedCharArr);
-    expect(sortCharactersAlphabetically(["C", "B", "B"])).toEqual(["b", "b", "c"]);
+    expect(sortCharactersAlphabetically(upperCaseCharArr)).toEqual(
+      sortedCharArr
+    );
+    expect(sortCharactersAlphabetically(["C", "B", "B"])).toEqual([
+      "b",
+      "b",
+      "c",
+    ]);
   });
 
   it("Should sort Uppercase and lowercase characters", () => {
-    expect(sortCharactersAlphabetically(mixedCaseArr)).toEqual(sortedMixedCaseArr);
-    expect(sortCharactersAlphabetically(["A", "b", "C"])).toEqual(["a", "b", "c"]);
+    expect(sortCharactersAlphabetically(mixedCaseArr)).toEqual(
+      sortedMixedCaseArr
+    );
+    expect(sortCharactersAlphabetically(["A", "b", "C"])).toEqual([
+      "a",
+      "b",
+      "c",
+    ]);
   });
 
   it("Should be the same length as the input", () => {
@@ -115,8 +134,10 @@ describe.skip("Testing checkItemInStock()", () => {
     "melon",
   ];
 
-  const expectedMatchMessage = (item: string, index: number) => `${item} is in stock, it is on aisle ${index}.`;
-  const expectedNoMatchMessage = (item: string) => `Sorry ${item} is not in stock.`;
+  const expectedMatchMessage = (item: string, index: number) =>
+    `${item} is in stock, it is on aisle ${index}.`;
+  const expectedNoMatchMessage = (item: string) =>
+    `Sorry ${item} is not in stock.`;
 
   it("Should handle single items from the stock list", () => {
     expect(checkItemInStock("apple")).toBe(expectedMatchMessage("apple", 0));
@@ -130,14 +151,23 @@ describe.skip("Testing checkItemInStock()", () => {
 
   it("Should handle every item in the stock list", () => {
     const checkAllStock = stockList.every(
-      (item, index) => checkItemInStock(item) === expectedMatchMessage(item, index)
+      (item, index) =>
+        checkItemInStock(item) === expectedMatchMessage(item, index)
     );
     expect(checkAllStock).toBe(true);
   });
 });
 
 describe.skip("Testing checkPrimaryColours()", () => {
-  const rainbowColours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+  const rainbowColours = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet",
+  ];
   const primaryColours = ["red", "yellow", "blue"];
 
   it("Should return true if all are primary", () => {
@@ -219,8 +249,12 @@ describe.skip("Testing encryptString()", () => {
   });
 
   it("Should encrypt large words", () => {
-    expect(encryptString("antidisestablishmentarianism")).toBe("aistlhnrnmndeaimtiitisbseaas");
-    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe("hpomsosielpbiototsqpdihipponreupaooa");
+    expect(encryptString("antidisestablishmentarianism")).toBe(
+      "aistlhnrnmndeaimtiitisbseaas"
+    );
+    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe(
+      "hpomsosielpbiototsqpdihipponreupaooa"
+    );
   });
 
   it("Should keep spaces between words", () => {

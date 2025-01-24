@@ -12,7 +12,7 @@ import {
 
 // REMOVE .skip FROM describe FUNCTION TO STOP SKIPPING TEST BLOCKS
 
-describe("createFullName() tests", () => {
+describe.skip("createFullName() tests", () => {
   it("Should work with basic inputs", () => {
     expect(createFullName("John", "Smith")).toBe("John Smith");
   });

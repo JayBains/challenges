@@ -18,10 +18,7 @@
 const firstName = "John";
 const lastName = "Smith";
 
-export const createFullName = (): string => {
-  // Write your code here
-  return "";
-};
+export const createFullName = (): string => firstName + " " + lastName;
 
 /**
  * A function that programmatically returns the largest number.
@@ -32,10 +29,8 @@ export const createFullName = (): string => {
 const largeNumber1 = 100;
 const largeNumber2 = 200;
 
-export const findLargestNumber = (): number => {
-  // Write your code here
-  return -1;
-};
+export const findLargestNumber = (): number =>
+  largeNumber1 < largeNumber2 ? largeNumber2 : largeNumber1;
 
 /**
  * A function that programmatically adds two numbers together.
@@ -46,10 +41,7 @@ export const findLargestNumber = (): number => {
 const addNumber1 = 12;
 const addNumber2 = 24;
 
-export const addNumbers = (): number => {
-  // Write your code here
-  return -1;
-};
+export const addNumbers = (): number => addNumber1 + addNumber2;
 
 /* Intermediate Challenges */
 
@@ -61,10 +53,7 @@ export const addNumbers = (): number => {
  */
 const password = "thisIsMyVeryLongPassword123456789";
 
-export const findLengthOfPassword = (): number => {
-  // Write your code here
-  return -1;
-};
+export const findLengthOfPassword = (): number => password.length;
 
 /**
  * A function that programmatically tells you what the type of the variable is.
@@ -78,10 +67,7 @@ export const findLengthOfPassword = (): number => {
  */
 const thing = "I am a thing";
 
-export const findType = (): string => {
-  // Write your code here
-  return "";
-};
+export const findType = (): string => `This is a ${typeof thing}`;
 
 /**
  * A function to programmatically decide if a name is suitable for a name tag.
@@ -92,10 +78,11 @@ export const findType = (): string => {
  */
 const nameTagOption = "Timothy";
 
-export const getIsValidOnNameTag = (): boolean => {
-  // Write your code here
-  return false;
-};
+export const getIsValidOnNameTag = (): boolean =>
+  nameTagOption.length <= 8 &&
+  nameTagOption.substring(0, 1) == nameTagOption.substring(0, 1).toUpperCase()
+    ? true
+    : false;
 
 /* Advanced Challenges */
 
@@ -107,10 +94,7 @@ export const getIsValidOnNameTag = (): boolean => {
  */
 const stringToConvert = "14.45";
 
-export const convertStringToNumber = (): number => {
-  // Write your code here
-  return -1;
-};
+export const convertStringToNumber = (): number => parseFloat(stringToConvert);
 
 /**
  * A function that uses regex to programmatically test if a string contains uppercase letters.
@@ -123,8 +107,10 @@ export const convertStringToNumber = (): number => {
 const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
 
 export const getHasUppercaseLetters = (): boolean => {
-  // Write your code here
-  return false;
+  const regex = /([A-Z])/g;
+  const hasUpperCaseLetters = regex.test(stringWithUppercaseLetters);
+
+  return hasUpperCaseLetters;
 };
 
 /* Expert Challenges */
@@ -140,6 +126,9 @@ export const getHasUppercaseLetters = (): boolean => {
 const pascalCaseVariableName = "IWantToBeSnakeCase";
 
 export const convertPascalCaseToSnakeCase = (): string => {
-  // Write your code here
-  return "";
+  const splitWords = pascalCaseVariableName.split(/(?=[A-Z])/);
+  const joinedWordsWithUnderscores = splitWords.join("_");
+  const snakeCase = joinedWordsWithUnderscores.toLowerCase();
+
+  return snakeCase;
 };
