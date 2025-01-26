@@ -10,9 +10,9 @@ import {
   multiplyNumbers,
 } from "./challenge";
 
-// REMOVE .skip FROM describe FUNCTION TO STOP SKIPPING TEST BLOCKS
+// REMOVE  FROM describe FUNCTION TO STOP PING TEST BLOCKS
 
-describe.skip("createFullName() tests", () => {
+describe("createFullName() tests", () => {
   it("Should work with basic inputs", () => {
     expect(createFullName("John", "Smith")).toBe("John Smith");
   });
@@ -22,7 +22,7 @@ describe.skip("createFullName() tests", () => {
   });
 });
 
-describe.skip("findSmallestNumber() tests", () => {
+describe("findSmallestNumber() tests", () => {
   it("Should return the smallest of two numbers", () => {
     // @ts-ignore - ONLY SO STUDENTS GET PRACTICE DEFINING PARAMETERS
     expect(findSmallestNumber(100, 200)).toBe(100);
@@ -36,7 +36,7 @@ describe.skip("findSmallestNumber() tests", () => {
   });
 });
 
-describe.skip("multiplyNumbers() tests", () => {
+describe("multiplyNumbers() tests", () => {
   it("Should multiply 3 and 6 to make 18", () => {
     // @ts-ignore - ONLY SO STUDENTS GET PRACTICE DEFINING PARAMETERS
     expect(multiplyNumbers(3, 6)).toBe(18);
@@ -48,7 +48,7 @@ describe.skip("multiplyNumbers() tests", () => {
   });
 });
 
-describe.skip("checkIfNewHighScore() tests", () => {
+describe("checkIfNewHighScore() tests", () => {
   it("Should tell me if I beat the high score", () => {
     expect(checkIfNewHighScore(350, 325)).toBe("You got a new high score!");
   });
@@ -62,7 +62,7 @@ describe.skip("checkIfNewHighScore() tests", () => {
   });
 });
 
-describe.skip("celsiusToFahrenheit() tests", () => {
+describe("celsiusToFahrenheit() tests", () => {
   it("Should convert 15 C to 59 F", () => {
     expect(celsiusToFahrenheit(15)).toBe(
       "15 degrees celsius is 59 degrees fahrenheit"
@@ -75,7 +75,7 @@ describe.skip("celsiusToFahrenheit() tests", () => {
   });
 });
 
-describe.skip("calculateLifeTimeSupply() tests", () => {
+describe("calculateLifeTimeSupply() tests", () => {
   it("Should calculate the correct number if given 2 snickers, 25 years old and 90 years lifeExpectancy", () => {
     expect(calculateLifetimeSupply(2, 25, 90)).toBe(47450);
   });
@@ -85,7 +85,7 @@ describe.skip("calculateLifeTimeSupply() tests", () => {
   });
 });
 
-describe.skip("getGrade() tests", () => {
+describe("getGrade() tests", () => {
   it("Should return 'Score unavailable' if given an incorrect score", () => {
     expect(getGrade(-20)).toBe("Score unavailable");
     expect(getGrade(120)).toBe("Score unavailable");
@@ -122,7 +122,7 @@ describe.skip("getGrade() tests", () => {
   });
 });
 
-describe.skip("calculateAreaOfCircle() tests", () => {
+describe("calculateAreaOfCircle() tests", () => {
   it("Should have the answer to two decimal places", () => {
     expect(calculateAreaOfCircle(3)).toBeCloseTo(28.27, 2);
   });
@@ -134,7 +134,7 @@ describe.skip("calculateAreaOfCircle() tests", () => {
   });
 });
 
-describe.skip("getStudentSummary() tests", () => {
+describe("getStudentSummary() tests", () => {
   it("Should return 'My apologies NAME, there's been an error in processing your grade.' if a grade cannot be found", () => {
     expect(getStudentSummary(120, "John")).toBe(
       "My apologies John, there's been an error in processing your grade."

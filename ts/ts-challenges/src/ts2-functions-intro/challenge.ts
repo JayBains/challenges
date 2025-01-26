@@ -16,9 +16,8 @@
  * @param {string} lastName Smith
  * @returns {string} John Smith
  */
-export const createFullName = (firstName: string, lastName: string): string => {
-  return "";
-};
+export const createFullName = (firstName: string, lastName: string): string =>
+  firstName + " " + lastName;
 
 /**
  * A function that takes two numbers as an input and returns the smallest one.
@@ -28,9 +27,8 @@ export const createFullName = (firstName: string, lastName: string): string => {
  * @param {number} number2 200
  * @returns {number} 100
  */
-export const findSmallestNumber = (/* Write the parameters here */): number => {
-  return -1;
-};
+export const findSmallestNumber = (n1: number, n2: number): number =>
+  n1 < n2 ? n1 : n2;
 
 /**
  * A function that takes two numbers as input, multiplies them together and returns the product.
@@ -40,9 +38,7 @@ export const findSmallestNumber = (/* Write the parameters here */): number => {
  * @param {number} number2 6
  * @returns {number} 18
  */
-export const multiplyNumbers = (/* Write the parameters here */): number => {
-  return -1;
-};
+export const multiplyNumbers = (n1: number, n2: number): number => n1 * n2;
 
 /* Intermediate Challenges */
 
@@ -57,10 +53,14 @@ export const multiplyNumbers = (/* Write the parameters here */): number => {
  * @returns {string} "You got a new high score!" | "So close!" | "Better luck next time!"
  */
 export const checkIfNewHighScore = (
-  score: number,
-  highScore: number
+  s: number,
+  hs: number
 ): "You got a new high score!" | "So close!" | "Better luck next time!" => {
-  return "So close!";
+  if (s > hs) {
+    return "You got a new high score!";
+  } else if (s === hs) {
+    return "So close!";
+  } else return "Better luck next time!";
 };
 
 /**
@@ -69,9 +69,10 @@ export const checkIfNewHighScore = (
  * @param {number} tempInCelsius 15
  * @returns {string} "15 degrees celsius is 59 degrees fahrenheit"
  */
-export const celsiusToFahrenheit = (tempInCelsius: number): string => {
-  return "";
-};
+export const celsiusToFahrenheit = (tempInCelsius: number): string =>
+  `${tempInCelsius} degrees celsius is ${
+    tempInCelsius * (9 / 5) + 32
+  } degrees fahrenheit`;
 
 /**
  * A function that calculates the number of snickers needed for the rest of your life based on the number you eat per day,
@@ -82,8 +83,15 @@ export const celsiusToFahrenheit = (tempInCelsius: number): string => {
  * @param {number} maxAge 90
  * @returns {number} 47450
  */
-export const calculateLifetimeSupply = (snickersPerDay: number, age: number, maxAge: number): number => {
-  return -1;
+export const calculateLifetimeSupply = (
+  snickersPerDay: number,
+  age: number,
+  maxAge: number
+): number => {
+  let x = maxAge - age;
+  let y = x * 365;
+  let z = y * snickersPerDay;
+  return z;
 };
 
 /* Advanced Challenges */
@@ -93,7 +101,7 @@ export const calculateLifetimeSupply = (snickersPerDay: number, age: number, max
  * If the score is:
  *  100 - 80: "A"
  *  79 - 70: "B"
- *  79 - 60: "C"
+ *  69 - 60: "C"
  *  59 - 50: "D"
  *  49 - 40: "E"
  *  39 - 0: "F"
@@ -103,7 +111,23 @@ export const calculateLifetimeSupply = (snickersPerDay: number, age: number, max
  * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score: number): string => {
-  return "";
+  if (score < 0 || score > 100 || typeof score !== "number") {
+    return "Score unavailable";
+  }
+
+  if (score >= 80) {
+    return "A";
+  } else if (score >= 70) {
+    return "B";
+  } else if (score >= 60) {
+    return "C";
+  } else if (score >= 50) {
+    return "D";
+  } else if (score >= 40) {
+    return "E";
+  } else {
+    return "F";
+  }
 };
 
 /**
@@ -113,7 +137,8 @@ export const getGrade = (score: number): string => {
  * @returns {number} 28.27
  */
 export const calculateAreaOfCircle = (radius: number): number => {
-  return -1;
+  let area = Math.PI * radius ** 2;
+  return parseFloat(area.toFixed(2));
 };
 
 /* Expert Challenges */
@@ -135,5 +160,22 @@ export const calculateAreaOfCircle = (radius: number): number => {
  * @returns {string} "Congratulations John! You achieved a grade of A." | "My apologies John, there's been an error in processing your grade."
  */
 export const getStudentSummary = (score: number, name: string): string => {
-  return "";
+  const letterGrade = getGrade(score);
+
+  switch (letterGrade) {
+    case "A":
+      return `Congratulations ${name}! You achieved a grade of ${letterGrade}.`;
+    case "B":
+      return `Well done ${name}! You achieved a grade of ${letterGrade}.`;
+    case "C":
+      return `Nicely done ${name}! You achieved a grade of ${letterGrade}.`;
+    case "D":
+      return `That's okay ${name}. You achieved a grade of ${letterGrade}.`;
+    case "E":
+      return `Too bad ${name}. You achieved a grade of ${letterGrade}.`;
+    case "F":
+      return `Sorry ${name}. You achieved a grade of ${letterGrade}. There's always next year.`;
+    default:
+      return `My apologies ${name}, there's been an error in processing your grade.`;
+  }
 };
