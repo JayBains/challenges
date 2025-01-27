@@ -20,7 +20,7 @@ const ingredients = ["Bacon", "Lettuce", "Tomato"];
 const ingredientsString = "Bacon+Lettuce+Tomato";
 const itemString = "Apple+Orange+Pear";
 
-describe.skip("Testing createRecipeString()", () => {
+describe("Testing createRecipeString()", () => {
   it("Should handle multiple inputs", () => {
     expect(createRecipeString(ingredients)).toEqual(ingredientsString);
     expect(createRecipeString(items)).toEqual(itemString);
@@ -31,14 +31,14 @@ describe.skip("Testing createRecipeString()", () => {
   });
 });
 
-describe.skip("Testing getFirstAndLastItems()", () => {
+describe("Testing getFirstAndLastItems()", () => {
   it("Should handle multiple inputs", () => {
     expect(getFirstAndLastItems(coaches)).toEqual(["Andy", "Sam"]);
     expect(getFirstAndLastItems(items)).toEqual(["Apple", "Pear"]);
   });
 });
 
-describe.skip("Testing totalScores()", () => {
+describe("Testing totalScores()", () => {
   it("Should handle single input", () => {
     expect(totalScores([10])).toBe(10);
     expect(totalScores([1000])).toBe(1000);
@@ -52,7 +52,7 @@ describe.skip("Testing totalScores()", () => {
   });
 });
 
-describe.skip("Testing totalRange()", () => {
+describe("Testing totalRange()", () => {
   it("Should Total up the range of numbers", () => {
     expect(totalRange(5)).toBe(15);
     expect(totalRange(10)).toBe(55);
@@ -65,7 +65,7 @@ describe.skip("Testing totalRange()", () => {
   });
 });
 
-describe.skip("Testing moveFirstAndLastItems()", () => {
+describe("Testing moveFirstAndLastItems()", () => {
   it("Should handle multiple inputs", () => {
     expect(moveFirstAndLastItems(items)).toEqual(["Pear", "Apple", "Orange"]);
     expect(moveFirstAndLastItems(ingredients)).toEqual([
@@ -76,7 +76,7 @@ describe.skip("Testing moveFirstAndLastItems()", () => {
   });
 });
 
-describe.skip("Testing removeEvenNumbers()", () => {
+describe("Testing removeEvenNumbers()", () => {
   it("Should remove even numbers from array", () => {
     expect(removeEvenNumbers([2])).toEqual([]);
     expect(removeEvenNumbers([1])).toEqual([1]);
@@ -100,7 +100,7 @@ describe.skip("Testing removeEvenNumbers()", () => {
   });
 });
 
-describe.skip("Testing generateAverage()", () => {
+describe("Testing generateAverage()", () => {
   it("Should calculate the average of different numbers", () => {
     expect(generateAverage([1, 2, 3, 4, 5, 6])).toBe(4);
     expect(generateAverage([50, 60, 30, 70])).toBe(53);
@@ -117,7 +117,7 @@ describe.skip("Testing generateAverage()", () => {
   });
 });
 
-describe.skip("Testing reverseOrder()", () => {
+describe("Testing reverseOrder()", () => {
   it("Should not change a single item array", () => {
     expect(reverseOrder(["Pear"])).toEqual(["Pear"]);
     expect(reverseOrder(["Orange"])).toEqual(["Orange"]);
@@ -137,7 +137,7 @@ describe.skip("Testing reverseOrder()", () => {
   });
 });
 
-describe.skip("Testing generateHighscores()", () => {
+describe("Testing generateHighscores()", () => {
   let players: string[], playerScores: number[], highscores: string[];
   beforeEach(() => {
     players = ["Andy", "Bex", "Calum"];
@@ -176,7 +176,7 @@ describe.skip("Testing generateHighscores()", () => {
   });
 });
 
-describe.skip("Testing encryptString()", () => {
+describe("Testing encryptString()", () => {
   it("Should NOT encrypt three letters", () => {
     expect(encryptString("hey")).toBe("hey");
     expect(encryptString("ola")).toBe("ola");

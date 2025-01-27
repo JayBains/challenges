@@ -20,7 +20,7 @@
  */
 
 export const createRecipeString = (ingredientsArr: string[]): string => {
-  return "";
+  return ingredientsArr.join("+");
 };
 
 /**
@@ -31,7 +31,8 @@ export const createRecipeString = (ingredientsArr: string[]): string => {
  */
 
 export const getFirstAndLastItems = (itemsArr: string[]): string[] => {
-  return [];
+  let x = [itemsArr[0], itemsArr[itemsArr.length - 1]];
+  return x;
 };
 
 /**
@@ -42,7 +43,11 @@ export const getFirstAndLastItems = (itemsArr: string[]): string[] => {
  */
 
 export const totalScores = (scoreArr: number[]): number => {
-  return -1;
+  let sum = 0;
+  for (let i = 0; i < scoreArr.length; i++) {
+    sum += scoreArr[i];
+  }
+  return sum;
 };
 
 /* Intermediate Challenges */
@@ -56,7 +61,11 @@ export const totalScores = (scoreArr: number[]): number => {
  */
 
 export const totalRange = (rangeMax: number): number => {
-  return -1;
+  let x = 0;
+  for (let i = 0; i <= rangeMax; i++) {
+    x += i;
+  }
+  return x;
 };
 
 /**
@@ -67,7 +76,9 @@ export const totalRange = (rangeMax: number): number => {
  */
 
 export const moveFirstAndLastItems = (itemsArr: string[]): string[] => {
-  return [];
+  let x = [itemsArr[itemsArr.length - 1]];
+  x.splice(1, 0, itemsArr[0], itemsArr[1]);
+  return x;
 };
 
 /**
@@ -85,7 +96,7 @@ export const moveFirstAndLastItems = (itemsArr: string[]): string[] => {
  */
 
 export const removeEvenNumbers = (numberArr: number[]): number[] => {
-  return [];
+  return numberArr.filter((x) => x % 2 > 0);
 };
 
 /* Advanced Challenges */
@@ -99,7 +110,13 @@ export const removeEvenNumbers = (numberArr: number[]): number[] => {
  */
 
 export const generateAverage = (numberArr: number[]): number => {
-  return -1;
+  if (numberArr.length > 0) {
+    let sum = 0;
+    for (let i = 0; i < numberArr.length; i++) {
+      sum += numberArr[i];
+    }
+    return Math.round(sum / numberArr.length);
+  } else return 0;
 };
 
 /**
@@ -110,7 +127,13 @@ export const generateAverage = (numberArr: number[]): number => {
  */
 
 export const reverseOrder = (toReverseArr: any[]): any[] => {
-  return [];
+  if (toReverseArr.length > 1) {
+    let x = [];
+    for (let i = toReverseArr.length - 1; i >= 0; i--) {
+      x.push(toReverseArr[i]);
+    }
+    return x;
+  } else return toReverseArr;
 };
 
 /* Expert Challenges */
@@ -129,8 +152,22 @@ export const reverseOrder = (toReverseArr: any[]): any[] => {
  * @return {string[]} ["P:1 Tony scored 45","P:2 John scored 55","P:3 Dave scored 66"]
  */
 
-export const generateHighscores = (playersArr: string[], scoresArr: number[]): string[] | "invalid inputs" => {
-  return [];
+export const generateHighscores = (
+  playersArr: string[],
+  scoresArr: number[]
+): string[] | "invalid inputs" => {
+  if (playersArr.length !== scoresArr.length || !playersArr.length)
+    return "invalid inputs";
+  const scores: string[] = [];
+  while (scores.length !== playersArr.length) {
+    const index = scores.length;
+    const message = `P:${index + 1} ${playersArr[index]} scored ${
+      scoresArr[index]
+    }`;
+    scores.push(message);
+  }
+
+  return scores;
 };
 
 /**
@@ -156,5 +193,17 @@ export const generateHighscores = (playersArr: string[], scoresArr: number[]): s
  */
 
 export const encryptString = (toEncrypt: string): string => {
-  return "";
+  let x = [];
+  let y = [];
+  let z = [];
+  let w = [];
+  for (let i = 0; i < toEncrypt.length; i++) {
+    if (i % 3 == 0) {
+      x.push(toEncrypt[i]);
+    } else if (i % 3 == 1) {
+      y.push(toEncrypt[i]);
+    } else z.push(toEncrypt[i]);
+  }
+  w = [...x, ...y, ...z];
+  return w.flat().join("");
 };
