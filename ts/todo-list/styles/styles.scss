@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  font-size: 1.1em;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -41,6 +42,17 @@ h1 {
 
 .card {
   padding: 2em;
+
+  &__counter {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.prophecy {
+  button {
+    margin: 0 0 0 0.4em;
+  }
 }
 
 button {
