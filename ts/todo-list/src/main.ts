@@ -1,22 +1,44 @@
 import "../styles/styles.scss";
 
+let greeting = document.querySelector<HTMLHeadingElement>(".timeGreet");
 let taskCount = document.querySelector<HTMLParagraphElement>(".counter");
 let addBtn = document.querySelector<HTMLButtonElement>(".card__add-button");
 let input = document.querySelector<HTMLInputElement>(".card__new-task");
 let ul = document.querySelector<HTMLUListElement>(".prophecy");
 
-if (!taskCount || !addBtn || !input || !ul) {
+if (!greeting || !taskCount || !addBtn || !input || !ul) {
   throw new Error("missing elm");
 }
 
+const taskArr: string[] = [];
+let date = new Date();
+let hour = date.getUTCHours();
+
+function handleWelcomeMessage() {
+  if (!greeting) {
+    throw new Error("missing elm");
+  }
+
+  if (hour >= 6 && hour < 11) {
+    greeting.textContent = `Good Morning`;
+  } else if (hour >= 12 && hour < 18) {
+    greeting.textContent = `Good Afternoon`;
+  } else if (hour >= 18 && hour < 22) {
+    greeting.textContent = "Good evening";
+  } else if (hour >= 22 && hour < 2) {
+    greeting.textContent = "Prepare for bed";
+  } else {
+    greeting.textContent =
+      "A fully grown adult typically needs between 7 and 9 hours of sleep per night";
+  }
+}
+
 addBtn.addEventListener("click", (event) => {
-  createli(taskCount);
+  handleCreateList(taskCount);
   return event;
 });
 
-const taskArr: string[] = [];
-
-function createli(taskCount: HTMLParagraphElement) {
+function handleCreateList(taskCount: HTMLParagraphElement) {
   if (!input || !ul) {
     throw new Error("input, ul");
   }
@@ -27,9 +49,8 @@ function createli(taskCount: HTMLParagraphElement) {
     taskCount.textContent = `Tasks: ${taskArr.length}`;
 
     let li = document.createElement("li");
-    let delBtn = Object.assign(document.createElement("button"), {
-      className: "prophecy__delete",
-    });
+    let delBtn = document.createElement("button");
+
     delBtn.appendChild(document.createTextNode("Delete"));
 
     li.textContent = text;
@@ -49,3 +70,5 @@ function createli(taskCount: HTMLParagraphElement) {
   }
   console.log(taskArr);
 }
+
+handleWelcomeMessage();
