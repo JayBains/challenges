@@ -1,13 +1,22 @@
 import "../styles/styles.scss";
 
 let greeting = document.querySelector<HTMLHeadingElement>(".timeGreet");
-let newQuote = document.querySelector<HTMLHeadingElement>(".quote");
+let quote = document.querySelector<HTMLHeadingElement>(".quote__text");
+let newQuote = document.querySelector<HTMLButtonElement>(".quote__button");
 let taskCount = document.querySelector<HTMLParagraphElement>(".counter");
 let addBtn = document.querySelector<HTMLButtonElement>(".card__add-button");
 let input = document.querySelector<HTMLInputElement>(".card__new-task");
 let ul = document.querySelector<HTMLUListElement>(".prophecy");
 
-if (!greeting || !newQuote || !taskCount || !addBtn || !input || !ul) {
+if (
+  !greeting ||
+  !quote ||
+  !newQuote ||
+  !taskCount ||
+  !addBtn ||
+  !input ||
+  !ul
+) {
   throw new Error("missing elm");
 }
 
@@ -38,13 +47,8 @@ const getYeQuote = async () => {
   const response = await fetch("https://api.kanye.rest");
   const data = await response.json();
   console.log(data);
-  newQuote.textContent = data.quote;
+  quote.textContent = data.quote;
 };
-
-addBtn.addEventListener("click", (event) => {
-  handleCreateList(taskCount);
-  return event;
-});
 
 function handleCreateList(taskCount: HTMLParagraphElement) {
   if (!input || !ul) {
@@ -81,3 +85,13 @@ function handleCreateList(taskCount: HTMLParagraphElement) {
 
 handleWelcomeMessage();
 getYeQuote();
+
+addBtn.addEventListener("click", (event) => {
+  handleCreateList(taskCount);
+  return event;
+});
+
+newQuote.addEventListener("click", (event) => {
+  getYeQuote();
+  return event;
+});

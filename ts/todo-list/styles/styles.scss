@@ -27,6 +27,18 @@ h1 {
   font-size: 3.2em;
 }
 
+.quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  &__button {
+    max-width: 95px;
+    margin: 0 auto;
+  }
+}
+
 .card {
   padding: 2em;
 }
