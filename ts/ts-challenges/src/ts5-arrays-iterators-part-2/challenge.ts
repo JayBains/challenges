@@ -2,6 +2,8 @@
  *  & calling your own functions.
  */
 
+import { addNumbers } from "../ts1-types-and-control-flow/challenge";
+
 /* 
   All challenges in this repository are separated into four levels: Foundation, Intermediate, Advanced and Expert.
   The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
@@ -20,7 +22,8 @@
  */
 
 export const totalScoresArr = (scoresArr: number[]): number => {
-  return -1;
+  const total = scoresArr.reduce((total, current) => (total += current), 0);
+  return total;
 };
 
 /**
@@ -33,7 +36,8 @@ export const totalScoresArr = (scoresArr: number[]): number => {
  */
 
 export const reverseString = (toReverse: string): string => {
-  return "";
+  const revArr = toReverse.split("").reverse();
+  return revArr.join("");
 };
 
 /**
@@ -45,8 +49,12 @@ export const reverseString = (toReverse: string): string => {
  * @return {string[]} ["b", "b", "b", "g", "l", "n", "x", "x"]
  */
 
-export const sortCharactersAlphabetically = (characterArr: string[]): string[] => {
-  return [];
+export const sortCharactersAlphabetically = (
+  characterArr: string[]
+): string[] => {
+  const lowerCase = characterArr.map((x) => x.toLowerCase());
+  const sorted = lowerCase.sort();
+  return sorted;
 };
 
 /* Intermediate Challenges */
@@ -61,7 +69,10 @@ export const sortCharactersAlphabetically = (characterArr: string[]): string[] =
  */
 
 export const sortNumbersHighToLow = (numberArr: number[]): number[] => {
-  return [];
+  const newArr = [...numberArr].sort((a, b) => {
+    return b - a;
+  });
+  return newArr;
 };
 
 /**
@@ -92,7 +103,15 @@ export const checkItemInStock = (toCheck: string): string => {
     "blueberry",
     "melon",
   ];
-  return "";
+  const index = stockList.indexOf(toCheck);
+
+  let message = `Sorry ${toCheck} is not in stock.`;
+
+  if (index >= 0) {
+    message = `${toCheck} is in stock, it is on aisle ${index}.`;
+  }
+
+  return message;
 };
 
 /**
@@ -106,8 +125,24 @@ export const checkItemInStock = (toCheck: string): string => {
  */
 
 export const checkPrimaryColours = (coloursArr: string[]): boolean => {
-  return false;
+  let colorFlag = true;
+  for (let i = 0; i < coloursArr.length; i++) {
+    if (
+      coloursArr[i] !== "red" &&
+      coloursArr[i] !== "blue" &&
+      coloursArr[i] !== "yellow"
+    ) {
+      colorFlag = false;
+    }
+  }
+  return colorFlag;
 };
+
+// // Alternate solution
+// const primaryColours = ["red", "blue", "yellow"];
+// const colourCheck = coloursArr.every(colour => primaryColours.includes(colour));
+// return colourCheck;
+// };
 
 /* Advanced Challenges */
 
@@ -121,8 +156,20 @@ export const checkPrimaryColours = (coloursArr: string[]): boolean => {
  */
 
 export const checkStringPalindrome = (stringOne: string): boolean => {
-  return false;
+  let palindromeFlag = true;
+  let stringOneArr = stringOne.split("");
+  let stringOneArrReverse = [...stringOneArr].reverse();
+  if (stringOneArr.join("") !== stringOneArrReverse.join("")) {
+    palindromeFlag = false;
+  }
+  return palindromeFlag;
 };
+
+// // Alternate solution
+//   const reversedString = reverseString(stringOne);
+//   const checkPalindrome = reversedString === stringOne;
+//   return checkPalindrome;
+// };
 
 /**
  * A function that totals a nested array of scores arrays.
@@ -135,7 +182,9 @@ export const checkStringPalindrome = (stringOne: string): boolean => {
  */
 
 export const totalNestedScoresArr = (scoresArr: number[][]): number[] => {
-  return [];
+  const score = scoresArr.map((scoreArr) => totalScoresArr(scoreArr));
+
+  return score;
 };
 
 /* Expert Challenges */
@@ -166,5 +215,18 @@ export const totalNestedScoresArr = (scoresArr: number[][]): number[] => {
  */
 
 export const encryptString = (toEncrypt: string): string => {
-  return "";
+  const encrypted = toEncrypt
+    .split("")
+    .reduce(
+      (total, current, index) => {
+        const remainder = index % 3;
+        total[remainder].push(current);
+        return total;
+      },
+      [[], [], []] as string[][]
+    )
+    .flat()
+    .join("");
+
+  return encrypted;
 };
