@@ -125,24 +125,26 @@ export const checkItemInStock = (toCheck: string): string => {
  */
 
 export const checkPrimaryColours = (coloursArr: string[]): boolean => {
-  let colorFlag = true;
-  for (let i = 0; i < coloursArr.length; i++) {
-    if (
-      coloursArr[i] !== "red" &&
-      coloursArr[i] !== "blue" &&
-      coloursArr[i] !== "yellow"
-    ) {
-      colorFlag = false;
-    }
-  }
-  return colorFlag;
-};
+  //   let colorFlag = true;
+  //   for (let i = 0; i < coloursArr.length; i++) {
+  //     if (
+  //       coloursArr[i] !== "red" &&
+  //       coloursArr[i] !== "blue" &&
+  //       coloursArr[i] !== "yellow"
+  //     ) {
+  //       colorFlag = false;
+  //     }
+  //   }
+  //   return colorFlag;
+  // };
 
-// // Alternate solution
-// const primaryColours = ["red", "blue", "yellow"];
-// const colourCheck = coloursArr.every(colour => primaryColours.includes(colour));
-// return colourCheck;
-// };
+  // Alternate solution
+  const primaryColours = ["red", "blue", "yellow"];
+  const colourCheck = coloursArr.every((colour) =>
+    primaryColours.includes(colour)
+  );
+  return colourCheck;
+};
 
 /* Advanced Challenges */
 
